@@ -24,7 +24,7 @@
 /*!
  *	Second: Track All LINKS
  */
- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('a').click(function(){
 			_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]);
@@ -37,7 +37,7 @@
  */
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.cta_button a').click(function(){ // select all links with the class '.cta_button'
+		$('a.cta_button').click(function(){ // select all links with the class '.cta_button'
 			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]);
 		});
 	});
@@ -48,8 +48,13 @@
  */
  <script type="text/javascript">
 	$(document).ready(function(){
-		$('.hero-video-link a').click(function(){ // select all links with the class '.hero-video-link'
+		$('a.hero-video-link').click(function(){ // select all links with the class '.hero-video-link'
 			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]);
 		});
 	});
 </script>
+
+/*!
+ *	Note: Create an if/then statement for all links so that I can sort how I send analytics based on the presence of a type of class, ID, or Elements.
+ *			For instance, add: if $(this).hasClass('hero-video-link;) {} else {}
+ */
