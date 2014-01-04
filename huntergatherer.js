@@ -22,39 +22,18 @@
 </script>
 
 /*!
- *	Second: Track All LINKS
+ *	Second: Track All Links and send different tracking based on the type of link.
  */
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('a').click(function(){
-			_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]);
+			if $(this).hasClass('hero-video-link'){ // identify the links with video classes
+			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]); // Send video tracking
+			}else if $(this).hasClass('cta_button'){ // identify the links with button classes
+			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]); // Send button tracking
+			}else
+			_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]); // Send link tracking
+			}
 		});
 	});
 </script>
-
-/*!
- *	Third: Track all BUTTONS
- */
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('a.cta_button').click(function(){ // select all links with the class '.cta_button'
-			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]);
-		});
-	});
-</script>
-
-/*!
- *	Fourth: Track all VIDEO PLAYS
- */
- <script type="text/javascript">
-	$(document).ready(function(){
-		$('a.hero-video-link').click(function(){ // select all links with the class '.hero-video-link'
-			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]);
-		});
-	});
-</script>
-
-/*!
- *	Note: Create an if/then statement for all links so that I can sort how I send analytics based on the presence of a type of class, ID, or Elements.
- *			For instance, add: if $(this).hasClass('hero-video-link;) {} else {}
- */
