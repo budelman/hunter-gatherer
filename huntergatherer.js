@@ -22,23 +22,34 @@
 </script>
 
 /*!
- *	Second: Event Tracking for Buttons
+ *	Second: Track All LINKS
  */
-<script type="text/javascript">
+ <script type="text/javascript">
 	$(document).ready(function(){
-		$('a.cta_button').click(function(){
-			_gaq.push(['_trackEvent', 'Link', 'Click', $(this).attr('href')]);
+		$('a').click(function(){
+			_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]);
 		});
 	});
 </script>
 
 /*!
- *	Third: Event Tracking for Links
+ *	Third: Track all BUTTONS
+ */
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.cta_button').click(function(){
+			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]);
+		});
+	});
+</script>
+
+/*!
+ *	Fourth: Track all VIDEO PLAYS
  */
  <script type="text/javascript">
 	$(document).ready(function(){
-		$('a.cta_button').click(function(){
-			_gaq.push(['_trackEvent', 'Link', 'Click', $(this).attr('href')]);
+		$('.hero-video-link').click(function(){
+			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]);
 		});
 	});
 </script>
