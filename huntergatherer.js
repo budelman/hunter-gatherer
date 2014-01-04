@@ -37,7 +37,7 @@
  */
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.cta_button').click(function(){
+		$('.cta_button a').click(function(){ // select all links with the class '.cta_button'
 			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]);
 		});
 	});
@@ -48,7 +48,7 @@
  */
  <script type="text/javascript">
 	$(document).ready(function(){
-		$('.hero-video-link').click(function(){
+		$('.hero-video-link a').click(function(){ // select all links with the class '.hero-video-link'
 			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]);
 		});
 	});
