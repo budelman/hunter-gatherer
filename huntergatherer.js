@@ -10,30 +10,55 @@
 // Requires scrollDepth Script: <script src="jquery.scrolldepth.js"></script>
 
 /*!
- *	First: EverTrue Scroll Tracking Settings
+ *	First: Set EverTrue specific .scrollDepth tracking settings
  */
-<script>
+<script type="text/javascript">
+
 	$(function() {
-	  $.scrollDepth({
-	    minHeight: 2000, // Only track for documents taller than 2000px | Default: 0
-	    elements: ['#comments', 'footer'] // Track DOM elements | Default: []
-	    percentage: false, // Don't track depth percentage | Default: true});
+
+		$.scrollDepth ({
+
+			minHeight: 2000, // Only track for documents taller than 2000px | Default: 0 (all pages get tracked)
+
+			elements: [], // Track DOM elements like: ['#comments', 'footer'] | Default: [] (do not track specific elements)
+
+			percentage: true, // Don't track specific depth percentage | Default: true, (track deafult of 25, 50, 75, 100)
+
+		});
+
 	});
+
 </script>
 
 /*!
  *	Second: Track All Links and send different tracking based on the type of link.
  */
 <script type="text/javascript">
+
 	$(document).ready(function(){
+
 		$('a').click(function(){
-			if $(this).hasClass('hero-video-link'){ // identify the links with video classes
-			_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr('href')]); // Send video tracking
-			}else if $(this).hasClass('cta_button'){ // identify the links with button classes
-			_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]); // Send button tracking
-			}else
-			_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]); // Send link tracking
-			}
-		});
-	});
+
+			if $(this).hasClass ('hero-video-link') { // has a video class?
+
+				_gaq.push(['_trackEvent', 'Videos', 'Play', $(this).attr ('href') ]); // Send video tracking
+
+				}
+
+			else if $(this).hasClass ('cta_button') { // has a button class?
+
+				_gaq.push(['_trackEvent', 'Buttons', 'Click', $(this).attr('href')]); // Send button tracking
+
+				}
+
+			else { // is a link?
+
+				_gaq.push(['_trackEvent', 'Links', 'Click', $(this).attr('href')]); // Send link tracking
+
+				} // End if
+
+		}); // End click function
+
+	}); // End ready function
+
 </script>
